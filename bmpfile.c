@@ -41,7 +41,7 @@ BMP_Image* CleanUp(FILE* fptr, BMP_Image* img)
 BMP_Image* BMP_open(const char* filename)
 {
     FILE* fptr = NULL;
-    BMP_Image *img = NULL;
+    BMP_Image* img = NULL;
     fptr = fopen(filename, "r");
     if(fptr == NULL)
         return CleanUp(fptr, img);
