@@ -4,6 +4,12 @@
 #include <string.h>
 #include <ctype.h>
 
+#define KNRM "\x1B[0m"
+#define KRED "\x1B[31m"
+#define KGRN "\x1B[32m"
+#define KYEL "\x1B[33m"
+#define KCYN "\x1B[36m"
+
 int main(int argc, char** argv)
 {
     //Use for menu input
@@ -30,7 +36,7 @@ int main(int argc, char** argv)
         printf("File could not be found or opened...\n");
         return 0;
     }
-
+    printf("%s", KYEL);
     // Get user input
     printf("\nChoose modification: \n");
     printf("1. Keep only one color\n");
@@ -40,8 +46,8 @@ int main(int argc, char** argv)
     switch(userinput)
     {
         case 1: 
-            printf("Pick color: \n");
-            printf("0. blue \n1. green \n2. green \n");
+            printf("\nPick color: \n");
+            printf("0. blue \n1. green \n2. red \n");
             int input1 = -1;
             scanf("%d", &input1);
             BMP_color(image, input1);
@@ -49,7 +55,7 @@ int main(int argc, char** argv)
     }
     
     //Give the user to save or override image
-    printf("Save as new file? [y/n]:\n");
+    printf("\nSave as new file? [y/n]:\n");
     char saveoption = getchar();
     while(isalpha(saveoption) == 0) //Use to get rid of trailing whitespace
     {
@@ -73,14 +79,15 @@ int main(int argc, char** argv)
     
     if(result != 1)
     {
-        printf("Failed to save file...\n");
+        printf("\nFailed to save file...\n");
     }
     else
     {
+        printf("%s", KGRN);
         if(saveoption == 'y')
-            printf("File saved as %s\n", modifiedName);
+            printf("\nFile saved as %s\n\n", modifiedName);
         else
-            printf("File saved as %s\n", argv[1]);
+            printf("\nFile saved as %s\n\n", argv[1]);
     }
     return 0;
 }
