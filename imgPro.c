@@ -1,8 +1,9 @@
 #include <stdio.h>
-#include "bmpfunc.h"
-#include "bmpfile.h"
 #include <string.h>
 #include <ctype.h>
+
+#include "bmpfunc.h"
+#include "bmpfile.h"
 
 #define KNRM "\x1B[0m"
 #define KRED "\x1B[31m"
@@ -12,6 +13,8 @@
 
 int main(int argc, char** argv)
 {
+    printf("%s", KYEL);
+    printf("\n/////*****IMG PROCESS******/////\n");
     //Use for menu input
     int userinput = -1;
 
@@ -36,10 +39,10 @@ int main(int argc, char** argv)
         printf("File could not be found or opened...\n");
         return 0;
     }
-    printf("%s", KYEL);
     // Get user input
     printf("\nChoose modification: \n");
     printf("1. Keep only one color\n");
+    printf("2. Invert colors\n");
     scanf("%d", &userinput);
     
     // Apply selected image processing
@@ -51,6 +54,9 @@ int main(int argc, char** argv)
             int input1 = -1;
             scanf("%d", &input1);
             BMP_color(image, input1);
+            break;
+        case 2:
+            BMP_invert(image);
             break;
     }
     

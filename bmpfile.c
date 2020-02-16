@@ -29,6 +29,7 @@ BMP_Image* CleanUp(FILE* fptr, BMP_Image* img)
 {
     if(fptr != NULL)
         fclose(fptr);
+    
     if(img != NULL)
     {
         if(img -> data != NULL)
@@ -50,10 +51,11 @@ BMP_Image* BMP_open(const char* filename)
     if(img == NULL)
         return CleanUp(fptr, img);
     
-    //Read header
+    // Read header
     if(fread(&(img -> header), sizeof(BMP_Header), 1, fptr) != 1)
         return CleanUp(fptr, img);
-
+    
+    // Check if header is valid for img 
     if(CheckHeader(&(img -> header)) == 0)
         return CleanUp(fptr, img);
 
@@ -69,8 +71,9 @@ BMP_Image* BMP_open(const char* filename)
     if(fread(img -> data, sizeof(char), img -> data_size, fptr) != (img -> data_size))
         return CleanUp(fptr, img);
 
+    // Check for lingering data in the fptr stream
+    // Not at the end of file but the file still has data to clean up
     char onebyte;
-
     if(fread(&onebyte, sizeof(char), 1, fptr) != 0)
         return CleanUp(fptr, img);
 
