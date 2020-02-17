@@ -4,6 +4,9 @@ How to run:
 - Use make to generate executable
 - Run executable with "filename".bmp through command-line as first argument
 
-Note: bmp file must be in the same directory as executable (as of now)
+Note: 
+- bmp file must be in the same directory as executable (as of now)
+- bmp file must have a bit-depth of 24
+- Blurring currently works better the lower the image's resolution is
 
 Code is worked in reference with : Intermediate C Programming by Yun-Hsiang Lu

@@ -43,6 +43,7 @@ int main(int argc, char** argv)
     printf("\nChoose modification: \n");
     printf("1. Keep only one color\n");
     printf("2. Invert colors\n");
+    printf("3. Blur image\n");
     scanf("%d", &userinput);
     
     // Apply selected image processing
@@ -57,6 +58,11 @@ int main(int argc, char** argv)
             break;
         case 2:
             BMP_invert(image);
+            break;
+        case 3:
+            BMP_blur(image);
+            break;
+        default:
             break;
     }
     
