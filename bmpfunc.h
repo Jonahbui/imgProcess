@@ -32,4 +32,7 @@ void BMP_mix(BMP_Image* image);
 
 // Equalize by making the darkest to and brightest to 255
 void BMP_equalize(BMP_Image* image);
+
+// Blur an image
+void BMP_blur(BMP_Image* image, int radius);
 #endif
