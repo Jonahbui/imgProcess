@@ -53,13 +53,14 @@ void* blur_threads(void* arguments)
 	uint32_t width = args -> img -> width;
 	for(x = 0; x < width; x++)
 	{
-		int r = 0;
+		//Accumulate rgb values to find the new pixel rgb value later
+        int r = 0;
 		int g = 0;
 		int b = 0;
 
 		int i, j;
 		
-		// Use these for loops to calculate the average rgb value within the radius
+		// Use these for-loops to calculate the average rgb value within a radius
 		for(i = y-radius; i <= y+radius; i++)// y-coordinate of pixel
 		{
 			for(j = x-radius; j <= x+radius; j++)// x-coordinate of pixel
