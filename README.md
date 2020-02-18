@@ -1,5 +1,11 @@
 Purpose: A side-project that focuses on processing a .bmp file for educational use.
 
+Functions implemented:
+- Red, green, blue filter
+- Black and white filter
+- Inversion
+- Blur
+
 How to run:
 - Use make to generate executable
 - Run executable with "filename".bmp through command-line as first argument
